@@ -1,0 +1,10 @@
+name: Docs
+form: $/zen/gdp/models/doc/fields.yaml
+modelClass: Zen\Gdp\Models\Doc
+defaultRedirect: zen/gdp/docs
+create:
+    redirect: 'zen/gdp/docs/update/:id'
+    redirectClose: zen/gdp/docs
+update:
+    redirect: zen/gdp/docs
+    redirectClose: zen/gdp/docs

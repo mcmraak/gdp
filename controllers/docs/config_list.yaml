@@ -1,0 +1,12 @@
+list: $/zen/gdp/models/doc/columns.yaml
+modelClass: Zen\Gdp\Models\Doc
+title: Docs
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'zen/gdp/docs/update/:id'

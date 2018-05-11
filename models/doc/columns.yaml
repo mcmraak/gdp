@@ -1,0 +1,10 @@
+columns:
+    id:
+        label: id
+        type: number
+    name:
+        label: 'zen.gdp::lang.doc.name'
+        type: text
+    link:
+        label: 'zen.gdp::lang.doc.link'
+        type: partial

@@ -1,0 +1,15 @@
+plugin:
+    name: 'zen.gdp::lang.plugin.name'
+    description: 'zen.gdp::lang.plugin.description'
+    author: 'Alexander Ablizin'
+    icon: oc-icon-refresh
+    homepage: ''
+navigation:
+    gdp-main:
+        label: 'zen.gdp::lang.plugin.name'
+        url: zen/gdp/docs
+        icon: icon-refresh
+permissions:
+    zen.gdp.main:
+        tab: 'zen.gdp::lang.plugin.name'
+        label: 'zen.gdp::lang.plugin.access'

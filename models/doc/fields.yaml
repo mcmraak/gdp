@@ -1,0 +1,20 @@
+fields:
+    panel:
+        span: full
+        path: $/zen/gdp/controllers/docs/panel.php
+        context:
+            - update
+        type: partial
+    name:
+        label: 'zen.gdp::lang.doc.name'
+        span: full
+        type: text
+    link:
+        label: 'zen.gdp::lang.doc.link'
+        span: full
+        type: text
+    html:
+        label: HTML
+        span: full
+        size: large
+        type: richeditor

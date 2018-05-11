@@ -1,0 +1,5 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table zen_gdp_docs'
+    - builder_table_create_zen_gdp_docs.php
