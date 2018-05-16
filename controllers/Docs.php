@@ -74,7 +74,7 @@ class Docs extends Controller
 
             $html = explode('<div id="footer">', $html);
             if (count($html) > 1) {
-                $html = $html[123]; // 0
+                $html = $html[0]; // 0
             } else return false;
 
             $html = preg_replace('/<style type="text\/css">.*<\/style>/', '', $html);
