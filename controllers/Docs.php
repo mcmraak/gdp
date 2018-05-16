@@ -7,6 +7,7 @@ use Log;
 use Input;
 use Zen\Gdp\Models\Doc;
 use RainLab\Pages\Classes\Page;
+use Exception;
 
 class Docs extends Controller
 {
@@ -32,11 +33,12 @@ class Docs extends Controller
         $items = Doc::get();
         $count = $items->count();
         $item = $items[$steep];
-        $this->parse($item);
+        $parse = $this->parse($item);
         echo json_encode([
             'id' => $item->id,
             'steep' => $steep,
             'count' => $count,
+            'error' => ($parse)?false:true
         ]);
     }
 
@@ -47,23 +49,44 @@ class Docs extends Controller
         curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
         $html = curl_exec($curl);
         curl_close($curl);
+        if(!$html) return false;
+        try {
         $html = $this->htmlCleaner($html);
+        } catch (Exception $ex) {
+            Log::error($ex->getMessage());
+            return false;
+        }
+        if(!$html) {
+            return false;
+        }
         $item->html = $html;
         $item->save();
+        return true;
     }
 
     public function htmlCleaner($html)
     {
-        $html = explode('<div id="contents">', $html);
-        $html = $html[1];
-        $html = explode('<div id="footer">', $html);
-        $html = $html[0];
-        $html = preg_replace('/<style type="text\/css">.*<\/style>/','', $html);
-        $html = str_replace('<img','_img', $html);
-        $html = str_replace('<a','_a', $html);
-        $html = preg_replace('/<([a-z0-9]+) [^>]+>/i','<$1>', $html);
-        $html = str_replace('_img','<img', $html);
-        $html = str_replace('_a','<a', $html);
+        try {
+            $html = explode('<div id="contents">', $html);
+            if (count($html) > 1) {
+                $html = $html[1];
+            } else return false;
+
+            $html = explode('<div id="footer">', $html);
+            if (count($html) > 1) {
+                $html = $html[123]; // 0
+            } else return false;
+
+            $html = preg_replace('/<style type="text\/css">.*<\/style>/', '', $html);
+            $html = str_replace('<img', '_img', $html);
+            $html = str_replace('<a', '_a', $html);
+            $html = preg_replace('/<([a-z0-9]+) [^>]+>/i', '<$1>', $html);
+            $html = str_replace('_img', '<img', $html);
+            $html = str_replace('_a', '<a', $html);
+        } catch (Exception $ex) {
+            Log::error($ex->getMessage());
+            return false;
+        }
         return $html;
     }
 

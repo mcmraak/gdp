@@ -16,3 +16,6 @@
 [item-id].processed {
     color: blue;
 }
+[item-id].processed.error {
+    color: red;
+}

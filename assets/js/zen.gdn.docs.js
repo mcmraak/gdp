@@ -20,7 +20,7 @@ var GDP = new Vue({
                 data: {steep:$this.steep},
                 success: function (json) {
                     json = JSON.parse(json);
-                    $this.mark(json.id);
+                    $this.mark(json.id,json.error);
                     if(json.steep == json.count - 1) {
                         $this.processed = false;
                         $this.steep = 0;
@@ -33,8 +33,9 @@ var GDP = new Vue({
                 }
             });
         },
-        mark: function (id) {
-            $('span[item-id='+id+']').addClass('processed');
+        mark: function (id, error) {
+            var error = (error)?' error':''
+            $('span[item-id='+id+']').addClass('processed'+error);
         }
     }
 });
