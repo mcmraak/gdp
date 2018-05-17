@@ -3,7 +3,7 @@ Google docs parser
 
 Parse html-content from google docs
 
-## Steep by steep
+## Step by step
 #### Create google document
 ![image](https://raw.githubusercontent.com/mcmraak/gdp/master/assets/images/docs/1_create_doc.png)
 #### Select "Publish to the web"
