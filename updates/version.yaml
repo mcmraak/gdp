@@ -5,3 +5,5 @@
     - builder_table_create_zen_gdp_docs.php
 1.0.3:
     - 'Bug fixes'
+1.0.4:
+    - 'Add component for CMS Page'
